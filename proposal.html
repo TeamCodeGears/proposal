@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Michiki 프로젝트 발표자료</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #e2e8f0; /* Light blue-gray background */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .slide {
+            background-color: #ffffff;
+            border-radius: 1.5rem; /* More rounded corners */
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); /* Deeper shadow */
+            padding: 3rem 4rem; /* Increased padding */
+            margin-bottom: 2.5rem; /* Spacing between slides */
+            width: 100%;
+            max-width: 1000px; /* Max width for readability */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            min-height: 600px; /* Minimum height for slides */
+            box-sizing: border-box;
+        }
+        .slide-title {
+            font-size: 3.5rem; /* Larger title */
+            font-weight: 700; /* Bold */
+            color: #2c5282; /* Darker blue */
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.025em; /* Slightly tighter letter spacing */
+        }
+        .slide-subtitle {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: #4a5568; /* Grayish blue */
+            margin-bottom: 2rem;
+        }
+        .section-heading {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: #2b6cb0; /* Medium blue */
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid #63b3ed; /* Underline effect */
+            padding-bottom: 0.5rem;
+        }
+        .content-list {
+            list-style: none;
+            padding: 0;
+            width: 100%;
+            max-width: 700px;
+        }
+        .content-list li {
+            background-color: #edf2f7; /* Light gray background for list items */
+            border-radius: 0.75rem;
+            padding: 1.25rem 2rem;
+            margin-bottom: 1rem;
+            font-size: 1.15rem;
+            color: #2d3748; /* Dark gray text */
+            text-align: left;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: transform 0.2s ease-in-out;
+        }
+        .content-list li:hover {
+            transform: translateY(-5px); /* Slight lift on hover */
+        }
+        .content-list2 {
+            list-style: none;
+            padding: 0;
+            width: 100%;
+            max-width: 700px;
+        }
+        .content-list2 li {
+            background-color: #edf2f7; /* Light gray background for list items */
+            border-radius: 0.75rem;
+            padding: 1.25rem 2rem;
+            margin-bottom: 1rem;
+            font-size: 1.15rem;
+            color: #2d3748; /* Dark gray text */
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: transform 0.2s ease-in-out;
+        }
+        .content-list2 li:hover {
+            transform: translateY(-5px); /* Slight lift on hover */
+        }
+        .team-member-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.5rem;
+            width: 100%;
+            max-width: 800px;
+            margin-top: 2rem;
+        }
+        .team-member-card {
+            background-color: #e0f2f7; /* Lighter blue for cards */
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            font-weight: 600;
+            color: #2c5282;
+            font-size: 1.2rem;
+            transition: transform 0.2s ease-in-out;
+            display: flex; /* Flexbox for image and text alignment */
+            flex-direction: column; /* Stack image and text vertically */
+            align-items: center; /* Center items horizontally */
+            justify-content: flex-end; /* Align items to the bottom */
+            min-height: 200px; /* Ensure consistent height for cards */
+        }
+        .team-member-card:hover {
+            transform: scale(1.03);
+        }
+        .dev-env-table {
+            width: 100%;
+            max-width: 700px;
+            margin-top: 2rem;
+            border-collapse: separate; /* For rounded corners */
+            border-spacing: 0;
+            background-color: #f7fafc; /* Very light gray */
+            border-radius: 1rem;
+            overflow: hidden; /* Ensures rounded corners apply */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .dev-env-table th, .dev-env-table td {
+            padding: 1rem 1.5rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .dev-env-table th {
+            background-color: #4299e1; /* Blue header */
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        .dev-env-table td {
+            color: #2d3748;
+            font-size: 1rem;
+        }
+        .dev-env-table tr:last-child td {
+            border-bottom: none;
+        }
+        .dev-env-table tr:nth-child(even) {
+            background-color: #ebf8ff; /* Lightest blue for even rows */
+        }
+        .image-full-width {
+            width: 100%;
+            height: auto;
+            border-radius: 0.75rem;
+            margin-top: 2rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Slide 1: 표지 (Cover Page) -->
+    <div class="slide">
+        <h1 class="slide-title">Michiki</h1>
+        <p class="slide-subtitle">친구들과 여행 계획을 세우는 웹 서비스</p>
+    </div>
+
+    <!-- Slide 2: 목차 소개 (Table of Contents) -->
+    <div class="slide">
+        <h2 class="section-heading">CONTENTS</h2>
+        <ul class="content-list mt-8">
+            <li>1. 팀 소개</li>
+            <li>2. 주제</li>
+            <li>3. 개발 환경</li>
+            <li>4. 개발 내용</li>
+        </ul>
+    </div>
+
+    <!-- Slide 3: 팀 소개 (Team Members) -->
+    <div class="slide">
+        <h2 class="section-heading">팀 소개</h2>
+        <div class="team-member-grid">
+            <div class="team-member-card">
+                <img src="go.png" alt="고재한 사진" onerror="this.onerror=null;this.src='https://placehold.co/100x100/A0D9FF/000000?text=고재한';">
+                고재한
+            </div>
+            <div class="team-member-card">
+                <img src="leea.webp" alt="이아람 사진" onerror="this.onerror=null;this.src='https://placehold.co/100x100/A0D9FF/000000?text=이아람';">
+                이아람
+            </div>
+            <div class="team-member-card">
+                <img src="leej.png" alt="이제한 사진" onerror="this.onerror=null;this.src='https://placehold.co/100x100/A0D9FF/000000?text=이제한';">
+                이제한
+            </div>
+            <div class="team-member-card">
+                <img src="jang.png" alt="장치훈 사진" onerror="this.onerror=null;this.src='https://placehold.co/100x100/A0D9FF/000000?text=장치훈';">
+                장치훈
+            </div>
+            <div class="team-member-card">
+                <img src="jo.webp" alt="조해흠 사진" onerror="this.onerror=null;this.src='https://placehold.co/100x100/A0D9FF/000000?text=조해흠';">
+                조해흠
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4: 주제 (Project Purpose) -->
+    <div class="slide">
+        <h2 class="section-heading">주제</h2>
+        <p class="text-lg text-gray-700 leading-relaxed mb-6">
+            친구들과 함께 여행을 계획할 때 어려움을 겪는 경우가 많습니다.<br>
+            이러한 불편함을 해소하고, 더욱 즐거운 여행 준비 과정을 제공하고자 합니다.
+        </p>
+        <p class="text-lg text-gray-700 leading-relaxed mb-4 font-semibold">
+            Michiki의 목표는 다음과 같습니다!
+        </p>
+        <ul class="content-list2">
+            <li>친구들과 함께 실시간으로 쉽게 여행 계획을 세울 수 있는 웹 서비스</li>
+        </ul>
+    </div>
+
+    <!-- Slide 5: 개발 환경 (Development Environment) -->
+    <div class="slide">
+        <h2 class="section-heading">개발 환경</h2>
+        <table class="dev-env-table">
+            <thead>
+                <tr>
+                    <th>항목</th>
+                    <th>내용</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>OS</td>
+                    <td>Windows, Mac</td>
+                </tr>
+                <tr>
+                    <td>Web Browser</td>
+                    <td>Chrome</td>
+                </tr>
+                <tr>
+                    <td>Developer Tools</td>
+                    <td>VS Code, IntelliJ, Spring Tool Suite</td>
+                </tr>
+                <tr>
+                    <td>DB</td>
+                    <td>Oracle DB</td>
+                </tr>
+                <tr>
+                    <td>Server</td>
+                    <td>AWS ec2</td>
+                </tr>
+                <tr>
+                    <td>Language & Framework</td>
+                    <td> React, Java, Spring Boot</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Slide 6: 개발 내용 (Development Details) -->
+    <div class="slide">
+        <h2 class="section-heading">개발 내용</h2>
+        <ul class="content-list mb-8">
+            <li>
+                <strong>다국어지원</strong>: 한국어와 日本語를 지원
+            </li>
+            <li>
+                <strong>공유 링크를 통한 친구 초대</strong>: 여행 계획을 생성한 후, 초대 링크를 통하여 쉽게 공유
+            </li>
+            <li>
+                <strong>실시간 협업 기능</strong>: 참여자들이 동시에 여행 계획을 작성 및 수정
+            </li>
+            <li>
+                <strong>참여자 상태 확인</strong>: 참여자들의 커서 위치와 '상태말'을 실시간으로 공유하여 누가 어떤 부분을 작업 중인지 직관적으로 파악 가능
+            </li>
+            <li>
+                <strong>데이터 기반 여행지 추천</strong>: 서비스 사용자들의 실제 여행 계획 데이터를 분석하여, 인기 있는 여행지를 추천
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
